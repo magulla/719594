@@ -1,0 +1,7 @@
+.project
+/bin/
+.settings
+/build/
+.classpath
+target
+:
