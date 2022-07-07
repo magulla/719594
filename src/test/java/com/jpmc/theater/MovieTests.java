@@ -14,7 +14,10 @@ public class MovieTests {
     void specialMovieWith50PercentDiscount() {
         Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90),12.5, 1);
         Showing showing = new Showing(spiderMan, 5, LocalDateTime.of(LocalDate.now(), LocalTime.now()));
-        assertEquals(10, spiderMan.calculateTicketPrice(showing));
+        FeeCalculator feeCalculator = new FeeCalculator();
+        DiscountCalculator dicountCalculator = DiscountCalculator.create();
+		double fee = feeCalculator.calculate(dicountCalculator , showing, 1);
+        assertEquals(10, fee);
 
         System.out.println(Duration.ofMinutes(90));
     }

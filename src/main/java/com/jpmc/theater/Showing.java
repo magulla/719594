@@ -1,6 +1,7 @@
 package com.jpmc.theater;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Showing {
     private Movie movie;
@@ -33,7 +34,23 @@ public class Showing {
         return sequenceOfTheDay;
     }
 
-    private double calculateFee(int audienceCount) {
-        return movie.calculateTicketPrice(this) * audienceCount;
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(movie, sequenceOfTheDay, showStartTime);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Showing other = (Showing) obj;
+		return Objects.equals(movie, other.movie) && sequenceOfTheDay == other.sequenceOfTheDay
+				&& Objects.equals(showStartTime, other.showStartTime);
+	}
+    
+    
 }
