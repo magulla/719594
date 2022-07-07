@@ -1,5 +1,7 @@
 package com.jpmc.theater;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
@@ -8,6 +10,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
 
 public class DiscountCalculatorTests {
@@ -19,25 +24,25 @@ public class DiscountCalculatorTests {
 		Showing showing = createTestShowing(ticketPrice_100, sequenceOfTheDay_5, Constants.SPECIAL_MOVIE);
         DiscountCalculator discountCalculator = DiscountCalculator.create();
         BigDecimal discount = discountCalculator.getDiscount(showing);
-        assertEquals(expected20Percent, discount);
+        assertThat(discount.compareTo(expected20Percent), is(0));
     }
     
     @Test
     void firstShowingDiscount() {
-    	double expectedDiscount = 3;
+    	BigDecimal expectedDiscount = new BigDecimal(3);
 		Showing showing = createTestShowing(ticketPrice_100, sequenceOfTheDay_1, Constants.REGULAR_MOVIE);
         DiscountCalculator discountCalculator = DiscountCalculator.create();
         BigDecimal discount = discountCalculator.getDiscount(showing);
-		assertEquals(expectedDiscount, discount);
+        assertThat(discount.compareTo(expectedDiscount), is(0));
     }
 
     @Test
     void secondShowingDiscount() {
-    	double expectedDiscount = 2;
+    	BigDecimal expectedDiscount = new BigDecimal(2);
 		Showing showing = createTestShowing(ticketPrice_100, sequenceOfTheDay_2, Constants.REGULAR_MOVIE);
         DiscountCalculator discountCalculator = DiscountCalculator.create();
         BigDecimal discount = discountCalculator.getDiscount(showing);
-		assertEquals(expectedDiscount, discount);
+        assertThat(discount.compareTo(expectedDiscount), is(0));
     }
     
     private Showing createTestShowing(String  ticketPrice, int sequenceOfTheDay, int specialCode) {
