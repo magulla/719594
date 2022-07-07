@@ -1,8 +1,5 @@
 package com.jpmc.theater;
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
 import com.jpmc.theater.utils.TextUtils;
 
 public class TextSchedulePrinter implements SchedulePrinter{

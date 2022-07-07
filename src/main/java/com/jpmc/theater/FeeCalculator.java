@@ -1,8 +1,13 @@
 package com.jpmc.theater;
 
+import java.math.BigDecimal;
+
 public class FeeCalculator {
-	public double calculate(DiscountCalculator discountCalculator,Showing showing, int ticketsCount) {
-		return showing.getMovie().getTicketPrice() * ticketsCount - discountCalculator.getDiscount(showing); 
+	public BigDecimal calculate(DiscountCalculator discountCalculator,Showing showing, int ticketsCount) {
+		BigDecimal discount = discountCalculator.getDiscount(showing);
+		return showing.getMovieFee()
+				.subtract(discount)
+				.multiply(new BigDecimal(ticketsCount)); 
 	}
 
 }

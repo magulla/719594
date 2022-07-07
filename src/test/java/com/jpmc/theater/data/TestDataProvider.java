@@ -1,6 +1,7 @@
 package com.jpmc.theater.data;
 import static com.jpmc.theater.Constants.*;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -11,9 +12,9 @@ import com.jpmc.theater.Movie;
 import com.jpmc.theater.Showing;
 
 public class TestDataProvider {
-	  public static  Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90), 12.5, SPECIAL_MOVIE);
-	  public static Movie turningRed = new Movie("Turning Red", Duration.ofMinutes(85), 11, REGULAR_MOVIE);
-	  public static Movie theBatMan = new Movie("The Batman", Duration.ofMinutes(95), 9, REGULAR_MOVIE);
+	  public static  Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90), new BigDecimal("12.5"), SPECIAL_MOVIE);
+	  public static Movie turningRed = new Movie("Turning Red", Duration.ofMinutes(85),  new BigDecimal("11"), REGULAR_MOVIE);
+	  public static Movie theBatMan = new Movie("The Batman", Duration.ofMinutes(95),  new BigDecimal("9"), REGULAR_MOVIE);
 	  public static LocalDateProvider provider = LocalDateProvider.singleton();
 	  public static List<Showing>showings = List.of(
           new Showing(turningRed, 1, LocalDateTime.of(provider .currentDate(), LocalTime.of(9, 0))),

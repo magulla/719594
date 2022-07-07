@@ -1,5 +1,7 @@
 package com.jpmc.theater;
 
+import java.math.BigDecimal;
+
 public class Reservation {
     private Customer customer;
     private Showing showing;
@@ -11,8 +13,8 @@ public class Reservation {
         this.audienceCount = audienceCount;
     }
 
-    public double totalFee() {
-        return showing.getMovieFee() * audienceCount;
+    public BigDecimal totalFee(FeeCalculator feeCalculator, DiscountCalculator discountCalculator) {
+        return feeCalculator.calculate(discountCalculator, showing, audienceCount);
     }
 
 	@Override

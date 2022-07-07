@@ -3,6 +3,7 @@ package com.jpmc.theater;
 import static com.jpmc.theater.Constants.REGULAR_MOVIE;
 import static com.jpmc.theater.Constants.SPECIAL_MOVIE;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -11,9 +12,9 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-    	  Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90), 12.5, SPECIAL_MOVIE);
-          Movie turningRed = new Movie("Turning Red", Duration.ofMinutes(85), 11, REGULAR_MOVIE);
-          Movie theBatMan = new Movie("The Batman", Duration.ofMinutes(95), 9, REGULAR_MOVIE);
+    	  Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90), new BigDecimal("12.5"), SPECIAL_MOVIE);
+          Movie turningRed = new Movie("Turning Red", Duration.ofMinutes(85), new BigDecimal("11"), REGULAR_MOVIE);
+          Movie theBatMan = new Movie("The Batman", Duration.ofMinutes(95), new BigDecimal("9"), REGULAR_MOVIE);
           LocalDateProvider provider = LocalDateProvider.singleton();
 		  List<Showing>showings = List.of(
               new Showing(turningRed, 1, LocalDateTime.of(provider .currentDate(), LocalTime.of(9, 0))),
@@ -32,4 +33,5 @@ public class Main {
 		Theater theater = new Theater(builder.build(),printer);
         theater.printSchedule();
     }
+
 }

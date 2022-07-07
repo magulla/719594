@@ -1,5 +1,6 @@
 package com.jpmc.theater;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -26,7 +27,7 @@ public class Showing {
         return this.sequenceOfTheDay == sequence;
     }
 
-    public double getMovieFee() {
+    public BigDecimal getMovieFee() {
         return movie.getTicketPrice();
     }
 

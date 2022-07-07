@@ -1,27 +1,43 @@
 package com.jpmc.theater;
 
+import java.math.BigDecimal;
+
 public class DiscountCalculator {
 	
-	private DiscountCalculator(){}
-	public static DiscountCalculator create() {
-		return new DiscountCalculator();
+	private BigDecimal firstShowingDiscount;
+	private BigDecimal secondShowingDiscount;
+	private BigDecimal specialDiscountValue;
+
+	public DiscountCalculator(BigDecimal specialDiscountValue, BigDecimal firstShowingDiscount,
+			BigDecimal secondShowingDiscount) {
+				this.specialDiscountValue = specialDiscountValue;
+				this.firstShowingDiscount = firstShowingDiscount;
+				this.secondShowingDiscount = secondShowingDiscount;
 	}
-    public  double getDiscount(Showing showing) {
+
+	public static DiscountCalculator create() {
+		BigDecimal specialDiscountValue = new BigDecimal("0.2");
+		BigDecimal firstShowingDiscount = new BigDecimal("3");
+		BigDecimal secondShowingDiscount = new BigDecimal("2");
+		return new DiscountCalculator(specialDiscountValue,firstShowingDiscount,secondShowingDiscount);
+	}
+
+    public  BigDecimal getDiscount(Showing showing) {
     	Movie movie = showing.getMovie();
-        double specialDiscount = 0;
+    	BigDecimal specialDiscount = BigDecimal.ZERO;
         if (isSpecial(movie)) {
-            specialDiscount = movie.getTicketPrice() * 0.2;  // 20% discount for special movie
+            specialDiscount = movie.getTicketPrice().multiply(specialDiscountValue );  // 20% discount for special movie
         }
 
-        double sequenceDiscount = 0;
+        BigDecimal sequenceDiscount = BigDecimal.ZERO;
         if (isFirst(showing)) {
-            sequenceDiscount = 3; 
+            sequenceDiscount = firstShowingDiscount; 
         } else if (isSecond(showing)) {
-            sequenceDiscount = 2;
+            sequenceDiscount = secondShowingDiscount;
         }
 
         // biggest discount wins
-        return specialDiscount > sequenceDiscount ? specialDiscount : sequenceDiscount;
+        return specialDiscount.compareTo(sequenceDiscount)>=0? specialDiscount : sequenceDiscount;
     }
 
 	private boolean isSecond(Showing showing) {
