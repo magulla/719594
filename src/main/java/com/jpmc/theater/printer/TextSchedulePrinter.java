@@ -1,5 +1,6 @@
-package com.jpmc.theater;
+package com.jpmc.theater.printer;
 
+import com.jpmc.theater.Schedule;
 import com.jpmc.theater.utils.TextUtils;
 
 public class TextSchedulePrinter implements SchedulePrinter{

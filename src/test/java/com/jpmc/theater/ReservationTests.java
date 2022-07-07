@@ -1,12 +1,14 @@
 package com.jpmc.theater;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import com.jpmc.theater.discount.DiscountCalculator;
 
 public class ReservationTests {
 

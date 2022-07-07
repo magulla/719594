@@ -9,6 +9,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.jpmc.theater.printer.SchedulePrinter;
+import com.jpmc.theater.printer.TextSchedulePrinter;
+
 public class Main {
 
     public static void main(String[] args) {

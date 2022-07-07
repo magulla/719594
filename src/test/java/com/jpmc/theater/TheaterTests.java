@@ -18,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.jpmc.theater.data.TestDataProvider;
 import com.jpmc.theater.exceptions.NoShowingsForToday;
 import com.jpmc.theater.exceptions.NoSuchShowing;
+import com.jpmc.theater.printer.TextSchedulePrinter;
 
 @ExtendWith(MockitoExtension.class)
 public class TheaterTests {

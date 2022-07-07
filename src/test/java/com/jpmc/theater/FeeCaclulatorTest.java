@@ -15,6 +15,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.jpmc.theater.discount.DiscountCalculator;
+
 @ExtendWith(MockitoExtension.class)
 public class FeeCaclulatorTest {
 	

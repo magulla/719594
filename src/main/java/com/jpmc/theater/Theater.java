@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.jpmc.theater.exceptions.NoShowingsForToday;
 import com.jpmc.theater.exceptions.NoSuchShowing;
+import com.jpmc.theater.printer.SchedulePrinter;
 
 public class Theater {
 	Logger logger = LoggerFactory.getLogger(getClass());

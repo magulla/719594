@@ -2,6 +2,8 @@ package com.jpmc.theater;
 
 import java.math.BigDecimal;
 
+import com.jpmc.theater.discount.DiscountCalculator;
+
 public class Reservation {
     private Customer customer;
     private Showing showing;
